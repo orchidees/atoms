@@ -1,0 +1,29 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf350
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 Ato-ms : Installation instructions.\
+\
+This is an experimental prototype distribution, this text file is intended to help you through the installation steps of this software. This procedure is quite easy but will require a reboot of your computer during the process.\
+\
+1) Install a MySQL Server, the latest OSX 10.6 version is available in this folder, or you can download one for your OS at : {\field{\*\fldinst{HYPERLINK "http://dev.mysql.com/downloads/mysql/"}}{\fldrslt http://dev.mysql.com/downloads/mysql/}}\
+\
+2) Add the MySQL.prefPane to your preferences panel (it will allow you to quickly check that the SQL server is running at startup), you can also use the startup item package.\
+\
+3) Reboot your computer\
+\
+4) Check that the SQL server is running in your preferences\
+\
+5) Launch the Ato-ms.pkg installation package and follow instructions.\
+Warning : The 'script execution' step is responsible for importing and structuring the knowledge database. Because of the current size of feature knowledge (~1.5 Gb), this step may take a long time before completion (~ 5-10 minutes).\
+\
+6) Start the Ato-me.app in your Applications folder.\
+\
+If you encounter any problem or the application doesn't seem to work, two files are available to narrow down the problem :\
+/tmp/atomsInstallReport.txt\
+/tmp/atomsInstallOut.txt\
+\
+You can send any question or problems (along with the two install text files) at :\
+esling@ircam.fr}

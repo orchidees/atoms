@@ -1,0 +1,58 @@
+function status = sendReport(type, author, title, description, doSendSession)
+newline = char([13 10]);
+spaceChar = char(32);
+switch type
+    case 'idea'
+        msgType = '[IDEA]';
+    case 'error'
+        msgType = '[ERROR]';
+    case 'feature'
+        msgType = '[FEATURE]';
+    case 'problem'
+        msgType = '[PROBLEM]';
+    case 'results-good'
+        msgType = '[GOOD RESULTS]';
+    case 'results-bad'
+        msgType = '[BAD RESULTS]';
+    case 'suggestion'
+        msgType = '[SUGGEST]';
+    otherwise
+        msgType = '[OTHER]';
+end
+msgAuthor = ['[' author ']'];
+subjectTitle = [msgType msgAuthor title];
+messageResults = description;
+% Send attached files
+if doSendSession
+    % Export session
+    % + Wavwrite
+    attachements = {'/tmp/exportSession.orch','/tmp/exportTarget.wav'};
+    tarFileType = '.tar.gz';
+    tarFileName = '/tmp/resultsPackaged';
+    tarFile = strcat(tarFileName, tarFileType);
+    numberOfFileExtensions = length(strfind(tarFileType, '.'));
+    tarFile = char(timeStamp(tarFile, numberOfFileExtensions, char('sec_OFF')));
+    contentsToBeTarZipped = vertcat(attachements);
+    contentsToBeTarZipped = contentsToBeTarZipped(:)';
+    tar(tarFile, contentsToBeTarZipped);
+    attachments = tarFile;
+else
+    attachments = [];
+end
+emailContents = messageResults;
+senderMail = 'filooops@gmail.com';
+senderPassword = 'ynCrKbfe';
+recipientEmails = {'ircam-orchestration@googlegroups.com'};
+sendMail(senderMail, senderPassword, recipientEmails, subjectTitle, emailContents, attachments)
+
+%messageResults = [ ...
+%    'Motif Candidate found : ', spaceChar, patternCandidate, newline, ...
+%    'Time taken        : ', spaceChar, num2str(tElapsed), newline, ...
+%    'Best match scores : ', spaceChar, num2str(bestMatchesScore), newline, ...
+%    'Locations <START> : ', spaceChar, num2str(locationsOfBestMatchesStart), newline, ...
+%    'Locations <END>   : ', spaceChar, num2str(locationsOfBestMatchesEnd), newline, ...
+%    '', newline, ...
+%    'numberOfBestMatchesFound_Total : ' spaceChar, num2str(numberOfBestMatchesFound_Total), newline, ...
+%    'Current Time      : ' spaceChar, datestr(now), newline, ...
+%                     ];
+

@@ -1,0 +1,16 @@
+#   Name				Length	Hopsize	ApplyOn
+#---------------------------------------------------------------------------------
+Mean					f	0	all
+StandardDeviation			f	0	all
+LoudnessWeightedMean			f	0	all
+LoudnessWeightedStandardDeviation	f	0	all
+ModulationAmplitude             	f	0	EnergyEnvelope,FundamentalFrequency
+ModulationFrequency			f	0	EnergyEnvelope,FundamentalFrequency
+LogAttackTime				f	0	EnergyEnvelope
+TemporalIncrease			f	0	EnergyEnvelope	
+TemporalDecrease			f	0	EnergyEnvelope
+TemporalCentroid			f	0	EnergyEnvelope
+EffectiveDuration			f	0	EnergyEnvelope
+
+
+

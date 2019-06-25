@@ -1,0 +1,120 @@
+;
+; Configuration file for ircamdescriptor, ver. 2.0
+;
+
+[Parameters]
+
+OutputFormat = sdif
+SaveShortTermFeatures = 1
+
+WindowType = blackman
+MaxFrequency = 5512.5
+FFTPadding = 1
+
+PerceptualBands = 24
+ReducedBands = 4
+MFCCs = 14
+AutoCorrelationCoeffs = 12
+Harmonics = 20
+
+DeviationStopBand = 10
+RolloffThreshold = 0.95
+DecreaseThreshold = 0.4
+NoiseThreshold = 0.15
+
+F0MaxAnalysisFreq = 3000
+F0MinFrequency = 200
+F0MaxFrequency = 1000
+F0AmpThreshold = 30
+F0Quality = 0.2
+
+[StandardDescriptors]
+
+; in seconds
+WindowSize = 0.06
+HopSize = 0.02
+
+; in frames, -1 means all the file and hop frames are not used
+TextureWindowsFrames = -1
+TextureWindowsHopFrames = -1	
+
+; temporal
+SignalZeroCrossingRate = 1
+TotalEnergy = 1
+EnergyEnvelope = 1	
+
+; spectral
+AutoCorrelation = 1
+SpectralCentroid = 1
+SpectralSpread = 1
+SpectralSkewness = 1
+SpectralKurtosis = 1
+SpectralSlope = 1
+SpectralDecrease = 1
+SpectralRolloff = 1
+SpectralVariation = 1
+		
+; perceptual
+Loudness = 1
+RelativeSpecificLoudness = 1
+Spread = 1
+Sharpness = 1
+PerceptualSpectralCentroid = 1	
+PerceptualSpectralSpread = 1
+PerceptualSpectralSkewness = 1
+PerceptualSpectralKurtosis = 1
+PerceptualSpectralSlope = 1
+PerceptualSpectralDecrease = 1
+PerceptualSpectralRolloff = 1
+PerceptualSpectralVariation = 1
+PerceptualSpectralDeviation = 1
+PerceptualOddToEvenRatio = 1
+PerceptualTristimulus = 1		
+MFCC = 1
+DeltaMFCC = 1
+DeltaDeltaMFCC = 1
+SpectralFlatness = 1
+SpectralCrest = 1
+			
+; harmonic
+FundamentalFrequency = 1
+NoiseEnergy = 1	
+Noisiness = 1
+Inharmonicity = 1	
+HarmonicEnergy = 1
+HarmonicSpectralCentroid = 1
+HarmonicSpectralSpread = 1
+HarmonicSpectralSkewness = 1
+HarmonicSpectralKurtosis = 1	
+HarmonicSpectralSlope = 1
+HarmonicSpectralDecrease = 1
+HarmonicSpectralRolloff = 1
+HarmonicSpectralVariation = 1
+HarmonicSpectralDeviation = 1	
+HarmonicOddToEvenRatio = 1
+HarmonicTristimulus = 1
+
+MeanAndDeviation = 1
+F0AmplitudeModulation = 1
+DynamicMorphologicFeatures = 1
+
+[EnergyDescriptors]
+
+; in seconds
+WindowSize = 0.09999
+HopSize = 0.002
+
+; in frames, -1 means all the file and hop frames are not used
+TextureWindowsFrames = -1
+TextureWindowsHopFrames = -1
+
+TemporalIncrease = 1
+TemporalDecrease = 1
+TemporalCentroid = 1
+EffectiveDuration = 1
+LogAttackTime = 1
+AmplitudeModulation = 1
+
+; (c) 2008 - www.ircam.fr
+;
+

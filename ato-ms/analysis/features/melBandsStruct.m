@@ -1,0 +1,32 @@
+function [melStruct partEner partMeanEner] = melBandsStruct(meln_s, mel_s, dynamique, partAmps, partAmpsMean)
+loudnessExp = .6;
+N6source  = FcalcN6(mel_s);
+N6cible = dynamicsToLoudness(dynamique);
+L6source = 2^(N6source/10);
+L6cible = 2^(N6cible/10);
+ld_v = sum(mel_s.value.^.6, 1);
+Lfacteur = L6cible^(1/loudnessExp) ./ L6source^(1/loudnessExp);
+meln_m = meln_s.value' .* Lfacteur;
+melnMeanNorm = norm(meln_m);
+ampEner = zeros(1, size(partAmps, 1));
+for i = 1:size(partAmps, 1)
+    ampEner(i) = norm(partAmps(i, :) .* Lfacteur) .^ 2;
+end
+ampMeanNorm = norm(partAmpsMean) .^ 2;
+melStruct = struct;
+melStruct.loudnessFactor = struct;
+melStruct.loudnessFactor.name = 'loudnessFactor';
+melStruct.loudnessFactor.value = Lfacteur;
+melStruct.melFrequency = struct;
+melStruct.melFrequency.name = 'MelAmplitude';
+melStruct.melFrequency.value =  meln_m ./ melnMeanNorm;
+melStruct.melEnergy = struct;
+melStruct.melEnergy.name = 'MelEnergy';
+melStruct.melEnergy.value =  melnMeanNorm .^ 2;
+partEner = struct;
+partEner.name = 'PartialsEnergy';
+partEner.value = ampEner;
+partMeanEner = struct;
+partMeanEner.name = 'PartialsMeanEnergy';
+partMeanEner.value = ampMeanNorm;
+end

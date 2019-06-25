@@ -1,0 +1,57 @@
+%
+% getDescriptorComplexValue.m   : Retrieving the value of a specific descriptor
+% Use an external joint if the value is complex to retrieve whole values
+%   - int(32) = Gaussian mixture modeling
+%   - int(33) = Array of atomic values
+%   - int(34) = Array of Gaussian mixtures
+%
+% connecDB                      : Pointer to the SQL connection
+% soundID                       : ID of the sound to retrieve
+% descriptor                    : Name of the descriptor
+%
+% Version                       : 1.0 / 2009
+%
+% Author                    : Philippe ESLING
+%                            <esling@ircam.fr>
+%
+function dValue = getDescriptorComplexValue(connecDB, soundID, descriptor)
+sqlQ = ['Show Columns From Sounds Where field = ''' descriptor ''''];
+cursor = exec(connecDB, sqlQ);
+cursor = fetch(cursor);
+dType = cursor.Data(:, 2);
+if (strcmp(dType, 'int(32)'))
+	descCell{1} = [descriptor 'TString'];
+	descCell{2} = [descriptor 'Mean'];
+	descCell{3} = [descriptor 'StdDev'];
+	descVal = getDescriptorMultipleValues(connecDB, soundID, descCell);
+	dTString = descVal{1};
+	dValue = invertScaleRepresentation(dTString(1:128), 64, descVal{2}, descVal{3});
+    dValue = filter([1 1], 1, dValue) ./ 2;
+    dValue = dValue(~isinf(dValue));
+    if (dValue(1) < ((dValue(2) / 2) + 1))
+        dValue = dValue(2:end);
+    end
+elseif (strcmp(dType, 'longblob'))
+    descVal = getDescriptorMultipleValues(connecDB, soundID, {descriptor, [descriptor 'Dimension']});
+    dValue = typecast(descVal{1}, 'double');
+    dValue = reshape(dValue, descVal{2}, []);
+elseif (strcmp(dType, 'blob'))
+    descVal = getDescriptorValue(connecDB, soundID, descriptor);
+    dValue = typecast(cell2mat(descVal), 'double');
+elseif (strcmp(dType, 'int(33)'))
+    sqlQ = ['SELECT ' descriptor ' from Arrays Where soundID = ' num2str(soundID)];
+    cursor = exec(connecDB, sqlQ);
+    cursor = fetch(cursor);
+    descVal = cursor.Data;
+    dValue = typecast(cell2mat(descVal), 'double');
+elseif (strcmp(dType, 'int(34)'))
+    sqlQ = ['SELECT ' descriptor ', ' descriptor 'Dimension from Arrays Where soundID = ' num2str(soundID)];
+    cursor = exec(connecDB, sqlQ);
+    cursor = fetch(cursor);
+    descVal = cursor.Data;
+    dValue = typecast(descVal{1}, 'double');
+    dValue = reshape(dValue, descVal{2}, []);
+else
+	dValue = getDescriptorValue(connecDB, soundID, descriptor);
+end
+end

@@ -1,0 +1,58 @@
+;~~~~~~~~~~~~~~~~~~~descriptors~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; temporal
+SignalZeroCrossingRate = ShortTime MeanAndDeviation Delta DeltaDelta Median
+TotalEnergy = ShortTime MeanAndDeviation Delta DeltaDelta Median
+
+; spectral
+AutoCorrelation = ShortTime MeanAndDeviation Delta DeltaDelta Median
+SpectralCentroid = ShortTime MeanAndDeviation Delta DeltaDelta Median
+SpectralSpread = ShortTime MeanAndDeviation Delta DeltaDelta Median
+SpectralSkewness = ShortTime MeanAndDeviation Delta DeltaDelta Median
+SpectralKurtosis = ShortTime MeanAndDeviation Delta DeltaDelta Median
+SpectralSlope = ShortTime MeanAndDeviation Delta DeltaDelta Median
+SpectralDecrease = ShortTime MeanAndDeviation Delta DeltaDelta Median
+SpectralRolloff = ShortTime MeanAndDeviation Delta DeltaDelta Median
+SpectralVariation = ShortTime MeanAndDeviation Delta DeltaDelta Median
+				
+; perceptual
+Loudness = ShortTime MeanAndDeviation Delta DeltaDelta Median 
+RelativeSpecificLoudness = ShortTime MeanAndDeviation Delta DeltaDelta Median
+Spread = ShortTime MeanAndDeviation Delta DeltaDelta Median
+Sharpness = ShortTime MeanAndDeviation Delta DeltaDelta Median
+PerceptualSpectralCentroid = ShortTime MeanAndDeviation Delta DeltaDelta Median
+PerceptualSpectralSpread = ShortTime MeanAndDeviation Delta DeltaDelta Median
+PerceptualSpectralSkewness = ShortTime MeanAndDeviation Delta DeltaDelta Median
+PerceptualSpectralKurtosis = ShortTime MeanAndDeviation Delta DeltaDelta Median
+PerceptualSpectralSlope = ShortTime MeanAndDeviation Delta DeltaDelta Median
+PerceptualSpectralDecrease = ShortTime MeanAndDeviation Delta DeltaDelta Median
+PerceptualSpectralRolloff = ShortTime MeanAndDeviation Delta DeltaDelta Median
+PerceptualSpectralVariation = ShortTime MeanAndDeviation Delta DeltaDelta Median
+PerceptualSpectralDeviation = ShortTime MeanAndDeviation Delta DeltaDelta Median
+PerceptualOddToEvenRatio = ShortTime MeanAndDeviation Delta DeltaDelta Median
+PerceptualTristimulus = ShortTime MeanAndDeviation Delta DeltaDelta Median
+
+MFCC = ShortTime MeanAndDeviation Delta DeltaDelta Median
+
+SpectralFlatness = ShortTime MeanAndDeviation Delta DeltaDelta Median
+SpectralCrest = ShortTime MeanAndDeviation Delta DeltaDelta Median
+						
+; harmonic
+FundamentalFrequency = ShortTime MeanAndDeviation Delta DeltaDelta Median
+NoiseEnergy = ShortTime MeanAndDeviation Delta DeltaDelta Median
+Noisiness = ShortTime MeanAndDeviation Delta DeltaDelta Median
+Inharmonicity = ShortTime MeanAndDeviation Delta DeltaDelta Median	 
+HarmonicEnergy = ShortTime MeanAndDeviation Delta DeltaDelta Median
+HarmonicSpectralCentroid = ShortTime MeanAndDeviation Delta DeltaDelta Median
+HarmonicSpectralSpread = ShortTime MeanAndDeviation Delta DeltaDelta Median
+HarmonicSpectralSkewness = ShortTime MeanAndDeviation Delta DeltaDelta Median
+HarmonicSpectralKurtosis = ShortTime MeanAndDeviation Delta DeltaDelta Median
+HarmonicSpectralSlope = ShortTime MeanAndDeviation Delta DeltaDelta Median
+HarmonicSpectralDecrease = ShortTime MeanAndDeviation Delta DeltaDelta Median
+HarmonicSpectralRolloff = ShortTime MeanAndDeviation Delta DeltaDelta Median
+HarmonicSpectralVariation = ShortTime MeanAndDeviation Delta DeltaDelta Median
+HarmonicSpectralDeviation = ShortTime MeanAndDeviation Delta DeltaDelta Median
+HarmonicOddToEvenRatio = ShortTime MeanAndDeviation Delta DeltaDelta Median
+HarmonicTristimulus = ShortTime MeanAndDeviation Delta DeltaDelta Median
+
+; chroma
+Chroma = ShortTime MeanAndDeviation Delta DeltaDelta Median
